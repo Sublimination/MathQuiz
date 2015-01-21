@@ -54,7 +54,7 @@ namespace MathQuiz
             {
                 highNumber = 50;
             }
-            // Get number of questions from drop down list
+            // Get number of questions from drop down list 
             maxQuestions = Convert.ToInt16(comboBox1.Text);
             revealQuiz();
             askQuestion();
