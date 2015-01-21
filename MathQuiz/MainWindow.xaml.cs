@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Text.RegularExpressions;
 
 namespace MathQuiz
 {
@@ -225,6 +226,12 @@ namespace MathQuiz
             tbAnswer.Visibility = System.Windows.Visibility.Visible;
             btnAnswer.Visibility = System.Windows.Visibility.Visible;
         }
+        private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
+        }
+        
         
 
             
