@@ -108,6 +108,11 @@
   <ItemGroup>
     <Resource Include="MathQuiz_32x32.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Cheer.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

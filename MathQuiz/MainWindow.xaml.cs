@@ -30,6 +30,7 @@ namespace MathQuiz
         int totalWrong = 0;
         int maxQuestions = 0;
         int highNumber = 0;
+        int passRate = 0;
         
         Random rnd = new Random();
 
@@ -46,14 +47,17 @@ namespace MathQuiz
             if (rbEasy.IsChecked.Value)
             {
                 highNumber = 10;
+                passRate = 7;
             }
             if (rbMedium.IsChecked.Value)
             {
                 highNumber = 25;
+                passRate = 18;
             }
             if (rbHard.IsChecked.Value)
             {
                 highNumber = 50;
+                passRate = 35;
             }
             // Get number of questions from drop down list 
             maxQuestions = Convert.ToInt16(comboBox1.Text);
@@ -65,6 +69,7 @@ namespace MathQuiz
 
         private void askQuestion() 
         {
+            
             numberOne = rnd.Next(1, highNumber);
             numberTwo = rnd.Next(1, highNumber);
             chooseOperator = rnd.Next(1, 1000);
@@ -142,7 +147,10 @@ namespace MathQuiz
 
         private void gameOver()
         {
-            
+            if (totalCorrect > passRate)
+            {
+                PlaySound();
+            }
             MessageBox.Show("Game Over!");
             btnPlayAgain.Visibility = System.Windows.Visibility.Visible;
         }
@@ -178,14 +186,17 @@ namespace MathQuiz
             if (rbEasy.IsChecked.Value)
             {
                 highNumber = 10;
+                passRate = 7;
             }
             if (rbMedium.IsChecked.Value)
             {
                 highNumber = 25;
+                passRate = 18;
             }
             if (rbHard.IsChecked.Value)
             {
                 highNumber = 50;
+                passRate = 35;
             }
             // Get number of questions from drop down list
             maxQuestions = Convert.ToInt16(comboBox1.Text);
@@ -231,7 +242,14 @@ namespace MathQuiz
             Regex regex = new Regex("[^0-9]+");
             e.Handled = regex.IsMatch(e.Text);
         }
-        
+        private void PlaySound()
+        {
+            //Uri uri = new Uri(@"C:\Users\Garth\Documents\Visual Studio 2013\Projects\MathQuiz\MathQuiz\Audio\Cheer.mp3");
+            Uri uri = new Uri(@"..\..\Audio\Cheer.mp3", UriKind.Relative);
+            var player = new MediaPlayer();
+            player.Open(uri);
+            player.Play();
+        }
         
 
             
